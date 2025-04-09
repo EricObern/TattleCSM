@@ -4,90 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eric Oberndorfer | Driving Client Success at Tattle</title>
+    <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* Base styles */
         body {
             font-family: 'Inter', sans-serif;
-            color: #1F2937; /* Slightly darker than default gray-800 */
+            color: #1F2937; /* Gray 800 */
             background-color: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .tattle-blue { color: #0052CC; } /* Adjusted Tattle Blue */
-        .tattle-bg-blue { background-color: #0052CC; }
-        .tattle-light-blue-bg { background-color: #F0F5FF; } /* Lighter, softer blue background */
-        .tattle-accent { color: #FF8B00; } /* Example accent, adjust if Tattle uses one */
-        .section-padding { padding: 4rem 1rem; } /* More padding */
+        /* Custom Tattle Colors */
+        .tattle-blue { color: #0052CC; }
+        .tattle-dark-blue-bg { background-color: #0B4F9A; } /* Darker blue for hero */
+        .tattle-orange { color: #F27B2C; }
+        .tattle-bg-orange { background-color: #F27B2C; }
+        .tattle-border-orange { border-color: #F27B2C; }
+        .tattle-light-gray-bg { background-color: #F7F8FA; } /* Tattle-like light background */
+
+        /* Section Padding */
+        .section-padding { padding: 4rem 1rem; }
         @media (min-width: 768px) {
             .section-padding { padding: 6rem 2rem; }
         }
+
+        /* Headings */
+        h1, h2 { font-weight: 700; /* Bolder */ }
         h2 {
-            font-size: 2rem; /* 32px */
-            font-weight: 600;
+            font-size: 2.25rem; /* 36px */
             color: #111827; /* Darker heading */
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem; /* More space below H2 */
             line-height: 1.3;
         }
         @media (min-width: 768px) {
-            h2 { font-size: 2.5rem; /* 40px */ }
+            h2 { font-size: 2.75rem; /* 44px */ }
         }
         h3 {
             font-size: 1.25rem; /* 20px */
             font-weight: 600;
-            color: #0052CC; /* Tattle Blue for subheads */
+            color: #0052CC; /* Standard Tattle Blue for subheads */
             margin-bottom: 1rem;
         }
-        .hero-gradient {
-             background: linear-gradient(135deg, #0052CC 0%, #0066FF 100%); /* Example gradient */
-        }
+
+        /* Cards */
         .value-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 12px; /* Equivalent to rounded-xl */
             padding: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Softer shadow (like shadow-lg) */
             border: 1px solid #E5E7EB; /* Subtle border */
             height: 100%; /* For equal height cards */
         }
+
+        /* Quote Styling */
         .quote-bubble {
-            background-color: #F0F5FF;
-            padding: 1.5rem;
+            background-color: #F0F5FF; /* Light blue */
+            padding: 1.5rem 2rem;
             border-radius: 8px;
             border-left: 4px solid #0052CC;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
             font-style: italic;
             color: #374151; /* Gray-700 */
         }
-        .cta-button {
+        .quote-bubble .attribution {
+             margin-top: 0.75rem;
+             font-style: normal;
+             font-weight: 500;
+             font-size: 0.9rem;
+             color: #4B5563; /* Gray-600 */
+        }
+
+        /* Button Styles */
+        .btn {
             display: inline-block;
-            background-color: #0052CC;
+            padding: 0.85rem 1.75rem; /* Slightly adjusted padding */
+            border-radius: 8px; /* rounded-lg */
+            font-weight: 600; /* Medium-Bold */
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+            border: 1px solid transparent; /* Base border */
+            letter-spacing: 0.01em;
+        }
+        .btn-primary {
+            background-color: #F27B2C; /* Tattle Orange */
             color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 6px;
-            font-weight: 500;
-            text-align: center;
-            transition: background-color 0.2s ease;
+            border-color: #F27B2C;
         }
-        .cta-button:hover {
-            background-color: #003DA5; /* Darker blue on hover */
+        .btn-primary:hover {
+            background-color: #E86A1A; /* Darker Orange */
+            border-color: #E86A1A;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-         .cta-button-secondary {
-            display: inline-block;
-            background-color: #fff;
-            color: #0052CC;
-            border: 1px solid #0052CC;
-            padding: 0.8rem 1.8rem;
-            border-radius: 6px;
-            font-weight: 500;
-            text-align: center;
-            transition: background-color 0.2s ease, color 0.2s ease;
-         }
-         .cta-button-secondary:hover {
-             background-color: #F0F5FF;
-             color: #003DA5;
-         }
+        .btn-secondary {
+            background-color: white;
+            color: #F27B2C; /* Tattle Orange Text */
+            border-color: #F27B2C;
+        }
+        .btn-secondary:hover {
+            background-color: #FFF8F2; /* Very light orange bg */
+            border-color: #E86A1A; /* Darker border */
+            color: #E86A1A;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        /* Icons */
         .icon-blue {
             color: #0052CC;
-            height: 3rem; /* 48px */
-            width: 3rem;  /* 48px */
+            height: 2.75rem; /* Slightly smaller */
+            width: 2.75rem;
             margin-bottom: 1rem;
         }
     </style>
@@ -95,29 +124,30 @@
 <body class="leading-relaxed">
 
     <!-- Hero Section -->
-    <section class="hero-gradient text-white section-padding">
+    <section class="tattle-dark-blue-bg text-white section-padding">
         <div class="container mx-auto max-w-4xl text-center">
-            <img src="https://media.licdn.com/dms/image/D5603AQF_R08uWn1n-A/profile-displayphoto-shrink_400_400/0/1709854199602?e=1718841600&v=beta&t=3lX-E72Q0qJjI6m3lQ3t8Y1u4Z_yQ-i_R0k7w1A8c-o" alt="Eric Oberndorfer" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-white shadow-lg">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Eric Oberndorfer</h1>
+            <!-- Ensure 'eric-headshot.jpg' is uploaded to the root -->
+            <img src="eric-headshot.jpg" alt="Eric Oberndorfer" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-white shadow-xl">
+            <h1 class="text-4xl md:text-5xl mb-4">Eric Oberndorfer</h1>
             <p class="text-xl md:text-2xl mb-8 font-light">Driving Client Success & Operational Excellence for Tattle Partners</p>
-            <p class="max-w-2xl mx-auto mb-10 text-lg font-light">Leveraging a decade of consultative partnership, data-driven improvement, and user enablement to help hospitality leaders turn Tattle's CX insights into tangible results.</p>
-            <div class="space-x-4">
-                 <a href="#connect" class="cta-button">Let's Connect</a>
-                 <a href="Eric_Oberndorfer_Resume.pdf" class="cta-button-secondary" target="_blank">Download Resume</a>
-                 <!-- Make sure Eric_Oberndorfer_Resume.pdf is in the same repo folder -->
+            <p class="max-w-2xl mx-auto mb-10 text-lg font-light opacity-90">Leveraging a decade of consultative partnership, data-driven improvement, and user enablement to help hospitality leaders turn Tattle's CX insights into tangible results.</p>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-4">
+                 <a href="#connect" class="btn btn-primary">Let's Connect</a>
+                 <!-- Ensure 'Eric_Oberndorfer_Resume_2025.pdf' is uploaded to the root -->
+                 <a href="Eric_Oberndorfer_Resume_2025.pdf" class="btn btn-secondary" target="_blank">Download Resume</a>
             </div>
         </div>
     </section>
 
-    <!-- The Tattle Opportunity (Why Eric Gets It) -->
+    <!-- The Tattle Opportunity Section -->
     <section class="section-padding bg-white">
         <div class="container mx-auto max-w-5xl">
             <h2 class="text-center">Why Tattle? Understanding the CXI Imperative</h2>
-            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">In today's competitive landscape, especially with consumers being more judicious, delivering exceptional, consistent guest experiences isn't optional—it's essential. Tattle is brilliantly positioned to solve this, moving beyond static feedback to actionable, AI-driven operational intelligence.</p>
+            <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto mb-12">In today's competitive landscape, especially with consumers being more judicious, delivering exceptional, consistent guest experiences isn't optional—it's essential. Tattle is brilliantly positioned to solve this, moving beyond static feedback to actionable, AI-driven operational intelligence.</p>
 
             <div class="quote-bubble">
                 "AI Coach is your personal operations analyst that absorbs your training manuals and turns guest feedback into clear, instant action plans... Lots of guest feedback, no clear action plan. Now, those challenges are gone forever."
-                <div class="mt-2 text-sm font-semibold text-gray-700">- Alex Beltrani, Tattle Founder/CEO</div>
+                <div class="attribution">- Alex Beltrani, Tattle Founder/CEO</div>
             </div>
 
             <p class="text-lg text-gray-700 mb-6">This quote resonates deeply. My background isn't just in identifying needs, but in architecting and implementing the *action plans* that drive real change. The challenge Alex highlights is exactly what I've helped clients overcome. Tattle provides the crucial technology link, and I'm excited by the prospect of ensuring clients fully leverage that power through:</p>
@@ -129,92 +159,99 @@
         </div>
     </section>
 
-    <!-- Eric's Value Proposition / Proof Points -->
-    <section class="section-padding tattle-light-blue-bg">
+    <!-- Eric's Value Proposition / Proof Points Section -->
+    <section class="section-padding tattle-light-gray-bg">
         <div class="container mx-auto max-w-6xl">
             <h2 class="text-center">How I Help Clients Succeed: Relevant Experience</h2>
-            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">My career has been focused on partnering with leaders to identify challenges, design solutions, and drive adoption. Here’s how my key experiences translate directly to empowering Tattle clients:</p>
+            <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto mb-16">My career has been focused on partnering with leaders to identify challenges, design solutions, and drive adoption. Here’s how my key experiences translate directly to empowering Tattle clients:</p>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card 1: Consultative Partner -->
                 <div class="value-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    <div class="flex justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    </div>
                     <h3 class="text-center">Consultative Partnership & Solution Design</h3>
-                    <p class="text-gray-600 mb-4">As Director at Planet Technology, I didn't just sell; I partnered with senior leaders across 14 states to diagnose complex operational needs (human capital focused) and designed bespoke action plans. My role involved:</p>
-                    <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                    <p class="text-gray-700 mb-4 text-center">As Director at Planet Technology, I partnered with senior leaders across 14 states to diagnose complex operational needs and designed bespoke action plans. My role involved:</p>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
                         <li>Deep discovery to understand unique client goals.</li>
                         <li>Architecting tailored solutions using a dedicated team.</li>
                         <li>Revitalizing key accounts and building top-performing partnerships.</li>
                     </ul>
-                    <p class="text-sm mt-4 font-semibold text-gray-700"><strong>Tattle CSM Alignment:</strong> This directly mirrors the need to understand each restaurant's unique challenges, guide them in leveraging Tattle strategically, and build lasting, value-driven relationships.</p>
+                    <p class="text-sm mt-4 font-semibold text-gray-800 text-center pt-4 border-t border-gray-200"><strong>Tattle CSM Alignment:</strong> Mirrors the need to understand client challenges, guide strategic platform use, and build lasting, value-driven relationships.</p>
                 </div>
 
                 <!-- Card 2: CX Catalyst -->
                 <div class="value-card">
-                     <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    <div class="flex justify-center">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
                     <h3 class="text-center">Data Insight & Technology Implementation</h3>
-                    <p class="text-gray-600 mb-4">My experiences have solidified my belief in data-driven action:</p>
-                    <ul class="list-disc pl-5 space-y-1 text-gray-600">
-                        <li><strong>AT&T "Store of the Future":</strong> Witnessed firsthand how capturing customer behavior data led directly to process improvements and higher satisfaction.</li>
-                        <li><strong>California Superbike School:</strong> Implemented innovative tech (360 cams, telemetry, eye-tracking) not just for feedback, but to deliver *actionable performance coaching*, achieving record satisfaction.</li>
+                    <p class="text-gray-700 mb-4 text-center">My experiences solidify my belief in data-driven action:</p>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                        <li><strong>AT&T "Store of the Future":</strong> Saw firsthand how customer data led directly to process improvements and higher satisfaction.</li>
+                        <li><strong>California Superbike School:</strong> Implemented tech (cams, telemetry, eye-tracking) for *actionable performance coaching*, achieving record satisfaction through this data-driven approach.</li>
                     </ul>
-                    <p class="text-sm mt-4 font-semibold text-gray-700"><strong>Tattle CSM Alignment:</strong> Proven ability to embrace new technologies and, crucially, translate data into tangible improvements – exactly what Tattle clients need to turn CX insights from the platform into better guest experiences.</p>
+                    <p class="text-sm mt-4 font-semibold text-gray-800 text-center pt-4 border-t border-gray-200"><strong>Tattle CSM Alignment:</strong> Proven ability to embrace technology and translate data into tangible improvements – helping clients turn insights into better guest experiences.</p>
                 </div>
 
                  <!-- Card 3: User Enablement -->
                 <div class="value-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    <div class="flex justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    </div>
                     <h3 class="text-center">Effective Training & User Enablement</h3>
-                    <p class="text-gray-600 mb-4">Selected to overhaul company-wide training at Planet Technology, I authored entirely revamped modules ("Written Communication," "On The Meeting") focused on clarity and practical application. My consistent recognition as a top trainer highlights my ability to:</p>
-                    <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                    <p class="text-gray-700 mb-4 text-center">Selected to overhaul training at Planet Technology, I authored revamped modules focused on clarity and application. Recognition as a top trainer highlights my ability to:</p>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
                         <li>Develop clear, engaging learning materials.</li>
-                        <li>Deliver training that ensures user understanding and competence.</li>
-                        <li>Drive adoption of tools and processes for maximum benefit.</li>
+                        <li>Deliver training that ensures user competence.</li>
+                        <li>Drive adoption of tools for maximum benefit.</li>
                     </ul>
-                     <p class="text-sm mt-4 font-semibold text-gray-700"><strong>Tattle CSM Alignment:</strong> Essential skills for onboarding new clients, driving platform adoption across restaurant teams (from GM to corporate), and ensuring users are empowered to get the most value from Tattle.</p>
+                     <p class="text-sm mt-4 font-semibold text-gray-800 text-center pt-4 border-t border-gray-200"><strong>Tattle CSM Alignment:</strong> Essential skills for onboarding, driving platform adoption across teams, and empowering users to gain full value from Tattle.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Direct Alignment Summary -->
+    <!-- Direct Alignment Summary Section -->
      <section class="section-padding bg-white">
         <div class="container mx-auto max-w-4xl text-center">
             <h2>Ready to Empower Tattle Clients</h2>
-            <p class="text-lg text-gray-600 mb-10">My journey—from observing data's impact on the front lines to designing high-level strategic solutions and enabling users through training—provides a unique foundation for the Customer Success Manager role. I'm equipped to manage post-sales activity, drive platform adoption, analyze data for actionable insights, and function as a true partner and advocate for Tattle's clients, helping them turn CX analytics into improved operations and revenue.</p>
-             <div class="flex flex-wrap justify-center gap-3">
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Account Management</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Client Onboarding & Training</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Data Analysis & Presentation</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Strategic Planning</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Relationship Building</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Problem Solving</span>
+            <p class="text-lg text-gray-700 mb-10">My journey—from observing data's impact on the front lines to designing high-level strategic solutions and enabling users through training—provides a unique foundation for the Customer Success Manager role. I'm equipped to manage post-sales activity, drive platform adoption, analyze data for actionable insights, and function as a true partner and advocate for Tattle's clients, helping them turn CX analytics into improved operations and revenue.</p>
+             <div class="flex flex-wrap justify-center gap-x-3 gap-y-3">
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1 rounded-full">Account Management</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1 rounded-full">Client Onboarding & Training</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1 rounded-full">Data Analysis & Presentation</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1 rounded-full">Strategic Planning</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1 rounded-full">Relationship Building</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1 rounded-full">Problem Solving</span>
              </div>
         </div>
      </section>
 
     <!-- Call to Action Section -->
-    <section id="connect" class="section-padding tattle-light-blue-bg">
+    <section id="connect" class="section-padding tattle-light-gray-bg">
         <div class="container mx-auto max-w-3xl text-center">
             <h2 class="tattle-blue">Let's Discuss the Opportunity</h2>
-            <p class="text-lg text-gray-700 mb-8">I am genuinely excited by Tattle's mission and the impact it delivers. I'm confident that my consultative approach, experience implementing data-driven improvements, and passion for client success align perfectly with this role and Tattle's culture. I'm eager to discuss how I can contribute to your team and help your clients thrive.</p>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6">
-                <a href="mailto:E.Obern@gmail.com" class="text-lg font-medium text-gray-800 hover:text-blue-600 transition">E.Obern@gmail.com</a>
-                <span class="hidden md:block text-gray-400">|</span>
-                <a href="tel:6197335323" class="text-lg font-medium text-gray-800 hover:text-blue-600 transition">619-733-5323</a>
-                <span class="hidden md:block text-gray-400">|</span>
-                <a href="https://linkedin.com/in/ericoberndorfer" target="_blank" class="text-lg font-medium text-gray-800 hover:text-blue-600 transition">LinkedIn Profile</a>
+            <p class="text-lg text-gray-700 mb-10">I am genuinely excited by Tattle's mission and the impact it delivers. I'm confident that my consultative approach, experience implementing data-driven improvements, and passion for client success align perfectly with this role and Tattle's culture. I'm eager to discuss how I can contribute to your team and help your clients thrive.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-10">
+                <a href="mailto:E.Obern@gmail.com" class="text-lg font-medium text-gray-900 hover:text-blue-600 transition duration-150 ease-in-out">E.Obern@gmail.com</a>
+                <span class="hidden md:block text-gray-400">·</span>
+                <a href="tel:6197335323" class="text-lg font-medium text-gray-900 hover:text-blue-600 transition duration-150 ease-in-out">619-733-5323</a>
+                <span class="hidden md:block text-gray-400">·</span>
+                <a href="https://linkedin.com/in/ericoberndorfer" target="_blank" class="text-lg font-medium text-gray-900 hover:text-blue-600 transition duration-150 ease-in-out">LinkedIn Profile</a>
             </div>
              <div class="mt-10">
-                 <a href="Eric_Oberndorfer_Resume.pdf" class="cta-button" target="_blank">Download Full Resume</a>
+                 <!-- Ensure 'Eric_Oberndorfer_Resume_2025.pdf' is uploaded -->
+                 <a href="Eric_Oberndorfer_Resume_2025.pdf" class="btn btn-primary" target="_blank">Download Full Resume</a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-800 text-gray-400 py-6">
+    <footer class="bg-gray-900 text-gray-400 py-6">
         <div class="container mx-auto px-4 md:px-8 text-center text-sm">
             <p>Webpage created by Eric Oberndorfer</p>
-            <p class="mt-1">Applying for the Customer Success Manager position at Tattle.</p>
+            <p class="mt-1 opacity-80">Applying for the Customer Success Manager position at Tattle.</p>
         </div>
     </footer>
 
